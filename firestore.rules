@@ -1,0 +1,135 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // -------------------------------------------------------------------------
+    // GLOBAL HELPERS
+    // -------------------------------------------------------------------------
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // -------------------------------------------------------------------------
+    // ENTITY VALIDATORS
+    // -------------------------------------------------------------------------
+    
+    function isValidPatient(data) {
+      return data.keys().hasAll(['id', 'name', 'phone', 'date_creation']) &&
+             data.id is string && data.name is string && data.phone is string;
+    }
+
+    function isValidAbonnement(data) {
+      return data.keys().hasAll(['id', 'name', 'patient_id', 'pack_id', 'date_debut', 'date']) &&
+             data.id is string && data.patient_id is string && data.pack_id is string;
+    }
+
+    function isValidVersement(data) {
+      return data.keys().hasAll(['id', 'gestion_abonnement_id', 'amount', 'date']) &&
+             data.id is string && data.gestion_abonnement_id is string && data.amount is number;
+    }
+
+    function isValidConsultation(data) {
+      return data.keys().hasAll(['id', 'name', 'patient_id', 'appointment_date', 'state', 'paye']) &&
+             data.id is string && data.patient_id is string && data.state is string;
+    }
+
+    function isValidTransaction(data) {
+      return data.keys().hasAll(['id', 'type', 'label', 'amount', 'payment_method', 'date']) &&
+             data.id is string && data.type is string && (data.type == 'recette' || data.type == 'depense');
+    }
+
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // -------------------------------------------------------------------------
+    // COLLECTIONS
+    // -------------------------------------------------------------------------
+
+    // Basic Nomenclature (Read: Auth, Write: Admin - simulating admin with email check or just allowing auth for now as it's a private ERP)
+    match /affectations/{id} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn(); // Simplified for private ERP
+    }
+    match /tarifs/{id} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
+    match /types_abonnement/{id} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
+    match /acts/{id} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
+    match /packs/{id} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
+
+    // Dynamic Data
+    match /patients/{id} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn() && isValidPatient(incoming());
+    }
+    match /abonnements/{id} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && isValidAbonnement(incoming());
+      allow update: if isSignedIn() && isValidAbonnement(incoming());
+      allow delete: if isSignedIn();
+    }
+    match /versements/{id} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && isValidVersement(incoming());
+      allow update: if isSignedIn() && isValidVersement(incoming());
+      allow delete: if isSignedIn();
+    }
+    match /balneo_apps/{id} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
+    match /kine_apps/{id} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
+    match /aide_kines/{id} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
+    match /consultations/{id} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && isValidConsultation(incoming());
+      allow update: if isSignedIn() && isValidConsultation(incoming());
+      allow delete: if isSignedIn();
+    }
+    match /caisse_transactions/{id} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && isValidTransaction(incoming());
+      allow update: if isSignedIn() && isValidTransaction(incoming());
+      allow delete: if isSignedIn();
+    }
+    match /intensif_grids/{id} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
+    match /chat_channels/{id} {
+      allow read, write: if true;
+    }
+    match /chat_messages/{id} {
+      allow read, write: if true;
+    }
+  }
+}

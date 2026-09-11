@@ -1,0 +1,6 @@
+{
+  "name": "Gestion Centre Rééducation",
+  "description": "Système de planification et de gestion médicale pour centres de rééducation avec blocage automatique d'erreurs en balnéothérapie, intensifs, abonnements et affectation par session.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

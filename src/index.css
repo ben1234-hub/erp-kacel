@@ -1,0 +1,1356 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Plus Jakarta Sans", "Inter", ui-sans-serif, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  /* Fond gris très clair */
+  --color-chiro-cream: #f8fafc;
+  
+  /* Sidebar blanche épurée */
+  --color-chiro-blue: #ffffff;
+  --color-chiro-light-blue: #eff6ff;
+  
+  /* Bleu médical #2563EB */
+  --color-chiro-gold: #2563eb;
+  --color-chiro-light-gold: #dbeafe;
+  
+  /* Vert succès #10B981 */
+  --color-chiro-mint-light: #d1fae5;
+  --color-chiro-mint-hover: #a7f3d0;
+
+  /* Brand colors matching patient detail dark/gold elegance */
+  --color-brand-dark: #0b0f19;
+  --color-brand-dark-light: #131b2e;
+  --color-brand-yellow: #f59e0b;
+
+  /* KACEL Sante Theme Colors */
+  --color-teal-50: #e0f2f1;
+  --color-teal-200: #80cbc4;
+  --color-teal-500: #26a69a;
+  --color-teal-600: #00897b;
+  --color-teal-800: #00838f;
+  --color-charcoal-900: #263238;
+
+  /* Standard Indigo scale mapped to support automatic styling components (using medical blue) */
+  --color-indigo-50: #ffffff;
+  --color-indigo-100: #eff6ff;
+  --color-indigo-200: #dbeafe;
+  --color-indigo-300: #93c5fd;
+  --color-indigo-400: #60a5fa;
+  --color-indigo-500: #2563eb;
+  --color-indigo-550: #2563eb;
+  --color-indigo-600: #2563eb;
+  --color-indigo-650: #1d4ed8;
+  --color-indigo-700: #1d4ed8;
+  --color-indigo-800: #1e40af;
+  --color-indigo-900: #1e3a8a;
+  --color-indigo-950: #0f172a;
+}
+
+/* Glassmorphic & Gold 3D Icon Styles - Premium Refined Aesthetic */
+.glass-gold-icon-container {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.05),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-gold-icon {
+  width: 18px;
+  height: 18px;
+  color: #C5A028; /* Polished Gold */
+  stroke-width: 2.2;
+  filter: drop-shadow(0 1px 2px rgba(197, 160, 40, 0.3));
+  transition: all 0.4s ease;
+}
+
+.active-glass-gold-button .glass-gold-icon-container {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(243, 232, 203, 0.7));
+  border-color: rgba(197, 160, 40, 0.4);
+  box-shadow: 
+    0 10px 20px rgba(197, 160, 40, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 1);
+  transform: translateY(-2px) rotate(2deg);
+}
+
+.active-glass-gold-button .glass-gold-icon {
+  color: #9C7E1E; /* Deep Polished Gold */
+  filter: drop-shadow(0 3px 5px rgba(156, 126, 30, 0.4));
+  transform: scale(1.1);
+}
+
+html, body {
+  background-color: #f8fafc;
+  color: #0f172a;
+  font-family: var(--font-sans);
+  overflow-x: hidden !important;
+}
+
+/* Stunning custom modern typography titles - Sleek geometric sans-serif for premium clinic look */
+h1, h2, h3, .canva-serif-title {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+
+/* Premium Navigation and Sidebar UI Override - Styled after KACEL SANTE Premium Theme */
+#sidebar-layout-panel {
+  background: #ffffff !important;
+  border-right: 1px solid #e2e8f0 !important;
+  color: #475569 !important;
+  font-family: var(--font-sans) !important;
+  box-shadow: 1px 0 10px rgba(0, 0, 0, 0.03) !important;
+}
+
+#sidebar-layout-panel h1, 
+#sidebar-layout-panel h2, 
+#sidebar-layout-panel h6,
+#sidebar-layout-panel .font-serif {
+  color: #0f172a !important;
+  font-family: var(--font-sans) !important;
+}
+
+#sidebar-layout-panel p,
+#sidebar-layout-panel span:not(.font-mono) {
+  font-family: var(--font-sans) !important;
+  color: #475569 !important;
+}
+
+#sidebar-layout-panel select {
+  background-color: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+  color: #1e293b !important;
+}
+
+#sidebar-layout-panel select option {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+}
+
+/* Translucent user session card & icon accent rules */
+#sidebar-layout-panel h1 svg,
+#sidebar-layout-panel .text-\[\#102e3b\] {
+  color: #0d9488 !important;
+}
+
+#sidebar-layout-panel .bg-white\/70, 
+#sidebar-layout-panel [class*="bg-white/70"] {
+  background-color: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+  color: #1e293b !important;
+}
+
+#sidebar-navigation button,
+#sidebar-layout-panel button {
+  font-family: var(--font-sans) !important;
+  border-radius: 12px !important;
+  margin-bottom: 4px !important;
+  transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Tab indicator style for active nav buttons in light theme */
+#sidebar-navigation button[class*="bg-white"],
+#sidebar-navigation button[class*="bg-indigo-"],
+#sidebar-navigation button.bg-white {
+  background-color: #f0fdfa !important; /* Soft Teal bg */
+  color: #0d9488 !important; /* Active teal text */
+  border-right: 4px solid #0d9488 !important; /* Safety Active indicator on the right block */
+  border-left: 0px !important;
+  border-top: 0px !important;
+  border-bottom: 0px !important;
+  border-radius: 12px 0px 0px 12px !important;
+  box-shadow: none !important;
+  font-weight: 800 !important;
+}
+
+/* Sidebar Active SVG icons inside light theme */
+#sidebar-navigation button[class*="bg-white"] svg,
+#sidebar-navigation button[class*="bg-indigo-"] svg,
+#sidebar-navigation button.bg-white svg,
+#sidebar-layout-panel button[class*="bg-white"] svg {
+  color: #0d9488 !important; /* Active teal icon color */
+  opacity: 1 !important;
+}
+
+/* Inactive tabs styling on Light Theme sidebar */
+#sidebar-navigation button:not([class*="bg-white"]):not([class*="bg-indigo-"]) {
+  color: #475569 !important;
+  background-color: transparent !important;
+  border-right: 4px solid transparent !important;
+  border-left: 0px !important;
+}
+
+#sidebar-navigation button:not([class*="bg-white"]):not([class*="bg-indigo-"]):hover {
+  color: #0f172a !important;
+  background-color: #f1f5f9 !important;
+  border-right: 4px solid #cbd5e1 !important;
+  border-left: 0px !important;
+}
+
+/* Ensure flat icons are sharply visible on light theme even out of focus  */
+#sidebar-navigation button:not([class*="bg-white"]):not([class*="bg-indigo-"]) svg:not([id^="custom-"]),
+#sidebar-main-menu button:not([class*="bg-teal-"]):not([class*="bg-indigo-"]):not([class*="bg-white"]) svg:not([id^="custom-"]) {
+  color: #64748b !important; 
+  opacity: 0.9 !important;
+}
+
+/* Ensure the icon background wrapper in Sidebar.tsx (bg-slate-100) remains clean and light */
+#sidebar-main-menu .bg-slate-100 {
+  background-color: #f1f5f9 !important;
+  color: inherit !important;
+}
+
+#sidebar-main-menu .text-slate-400 {
+  color: #64748b !important;
+  opacity: 0.85 !important;
+}
+
+/* Maintain full multi-color gradient of custom icons out of focus */
+#sidebar-navigation button:not([class*="bg-white"]):not([class*="bg-indigo-"]) svg[id^="custom-"],
+#sidebar-main-menu button:not([class*="bg-teal-"]):not([class*="bg-indigo-"]):not([class*="bg-white"]) svg[id^="custom-"] {
+  opacity: 0.95 !important;
+}
+
+#sidebar-navigation button:not([class*="bg-white"]):not([class*="bg-indigo-"]):hover svg:not([id^="custom-"]),
+#sidebar-main-menu button:not([class*="bg-teal-"]):not([class*="bg-indigo-"]):not([class*="bg-white"]):hover svg:not([id^="custom-"]) {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Custom cards styled with soft shadows and rounded borders 12-16px */
+.bg-white, [class*="bg-white"] {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.02), 0 1px 2px -1px rgba(0, 0, 0, 0.02);
+}
+
+.rounded-xl {
+  border-radius: 12px !important;
+}
+
+.rounded-2xl {
+  border-radius: 16px !important;
+}
+
+/* Refined Premium shadows */
+.shadow-xs, .shadow-sm {
+  box-shadow: 0 2px 8px -1px rgba(0, 0, 0, 0.03), 0 1px 4px -1px rgba(0, 0, 0, 0.02) !important;
+}
+
+.shadow-md {
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.04), 0 2px 6px -2px rgba(0, 0, 0, 0.02) !important;
+}
+
+.shadow-lg {
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.05), 0 4px 12px -4px rgba(0, 0, 0, 0.02) !important;
+}
+
+.shadow-2xl {
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* @media print logic to isolate and print only the prescription OR receipt sheets flawlessly */
+@media print {
+  /* Hide standard app framing layout and non-printable widgets */
+  #sidebar-layout-panel, 
+  #sidebar-navigation, 
+  #sidebar-header, 
+  #compact-app-header, 
+  #menu-afficher-trigger-bar, 
+  #toast-notification,
+  #caisses-tabs-wrapper,
+  button, 
+  .no-print {
+    display: none !important;
+  }
+
+  /* Reset layout constraints on root and window viewports so they don't clip the printed page height */
+  html, body, #root, #applet-viewport, #main-clinical-viewport, #tableau-de-bord-view, #medecin-mpr-workspace, #patients-management-workspace, #patient-fiche-detail-viewport {
+    position: static !important;
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    display: block !important;
+    background: white !important;
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Prevent container overflow scroll sections from clipping the print elements height */
+  .overflow-y-auto, .overflow-x-auto, .max-h-\[600px\] {
+    overflow: visible !important;
+    max-height: none !important;
+    height: auto !important;
+  }
+
+  /* Ensure color and high contrast during print */
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  /* Hide raw body content objects by default */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Force only the target custom print elements to be visible */
+  #printable-kine-automated-sheet, #printable-kine-automated-sheet * ,
+  #print-receipt-container, #print-receipt-container * ,
+  #print-abonnement-receipt, #print-abonnement-receipt * ,
+  #print-ticket-active-overlay, #print-ticket-active-overlay * ,
+  #print-ticket, #print-ticket * {
+    visibility: visible !important;
+  }
+
+  #print-ticket-active-overlay {
+    position: static !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  /* Pull sheets natively to the absolute top of the physical page and scale to full width */
+  #printable-kine-automated-sheet,
+  #print-receipt-container,
+  #print-abonnement-receipt,
+  #print-ticket {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    z-index: 9999999 !important;
+    display: block !important;
+    visibility: visible !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: white !important;
+    padding: 10px !important;
+    margin: 0 !important;
+  }
+
+  /* Avoid overlay blackouts of layout portals / blur layers */
+  div.fixed, div.backdrop-blur-xs {
+    position: static !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+/* Custom Scrollbars */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.custom-scrollbar-horizontal::-webkit-scrollbar {
+  display: none !important;
+}
+.custom-scrollbar-horizontal {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.visible-scrollbar-horizontal::-webkit-scrollbar {
+  height: 8px !important;
+  display: block !important;
+}
+.visible-scrollbar-horizontal::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+.visible-scrollbar-horizontal::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+.visible-scrollbar-horizontal::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+.visible-scrollbar-horizontal {
+  scrollbar-width: auto !important;
+  -ms-overflow-style: auto !important;
+}
+
+/* Table Optimization Helpers */
+.sticky-header-th {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: #f8fafc;
+}
+
+/* Theme Healthcare Modern & Calm Overrides (Standardized premium look) */
+.theme-healthcare-calm {
+  --color-chiro-cream: #f8fafc;
+  --color-chiro-blue: #ffffff;
+  --color-chiro-light-blue: #eff6ff; 
+  --color-chiro-gold: #2563eb;
+  --color-chiro-light-gold: #dbeafe;
+  --color-chiro-mint-light: #d1fae5;
+  --color-chiro-mint-hover: #a7f3d0;
+  
+  --color-indigo-50: #ffffff;
+  --color-indigo-100: #eff6ff; 
+  --color-indigo-200: #dbeafe;
+  --color-indigo-305: #dbeafe;
+  --color-indigo-300: #93c5fd;
+  --color-indigo-400: #3b82f6;
+  --color-indigo-500: #2563eb;
+  --color-indigo-550: #2563eb;
+  --color-indigo-600: #2563eb;
+  --color-indigo-650: #1d4ed8;
+  --color-indigo-700: #1d4ed8;
+  --color-indigo-800: #1e40af;
+  --color-indigo-900: #1e3a8a;
+  --color-indigo-950: #0f172a;
+}
+
+/* Accessibility tweaks for the calm medical theme */
+.theme-healthcare-calm .bg-chiro-cream {
+  background-color: #f8fafc !important;
+}
+.theme-healthcare-calm .text-\[\#102e3b\] {
+  color: #1e3a8a !important;
+}
+.theme-healthcare-calm .bg-\[\#102e3b\] {
+  background-color: #2563eb !important;
+}
+.theme-healthcare-calm .text-\[\#306568\] {
+  color: #64748b !important;
+}
+.theme-healthcare-calm .border-\[\#7fa4b3\]\/60 {
+  border-color: rgba(147, 197, 253, 0.45) !important;
+}
+.theme-healthcare-calm .border-\[\#7fa4b3\]\/40 {
+  border-color: rgba(147, 197, 253, 0.3) !important;
+}
+.theme-healthcare-calm .border-\[\#7fa4b3\]\/30 {
+  border-color: rgba(147, 197, 253, 0.2) !important;
+}
+.theme-healthcare-calm .hover\:bg-\[\#7fa4b3\]\/55:hover {
+  background-color: rgba(224, 242, 254, 0.8) !important;
+}
+.theme-healthcare-calm .hover\:bg-\[\#7fa4b3\]\/40:hover {
+  background-color: rgba(224, 242, 254, 0.6) !important;
+}
+.theme-healthcare-calm .bg-\[\#e4f2f2\]\/60 {
+  background-color: rgba(224, 242, 254, 0.5) !important;
+}
+.theme-healthcare-calm .text-\[\#1b3d4f\] {
+  color: #334155 !important;
+}
+.theme-healthcare-calm .text-\[\#1a414e\] {
+  color: #2563eb !important;
+}
+.theme-healthcare-calm .bg-\[\#c8e0de\]\/40 {
+  background-color: rgba(209, 250, 229, 0.4) !important;
+}
+.theme-healthcare-calm .border-\[\#9bb8ba\]\/20 {
+  border-color: rgba(16, 185, 129, 0.2) !important;
+}
+.theme-healthcare-calm .border-\[\#9bb8ba\] {
+  border-color: #2563eb !important;
+}
+
+/* Expanded access indicators to ensure strict contrast */
+.theme-healthcare-calm button,
+.theme-healthcare-calm a {
+  font-weight: 600;
+}
+
+/* Senior accessibility font zooming style */
+.senior-font .font-sans,
+.senior-font button,
+.senior-font th,
+.senior-font td,
+.senior-font input,
+.senior-font select,
+.senior-font span,
+.senior-font h4,
+.senior-font p,
+.senior-font div {
+  font-size: calc(100% + 2.5px) !important;
+  line-height: 1.4 !important;
+}
+.senior-font h1,
+.senior-font h2,
+.senior-font h3 {
+  font-size: calc(100% + 4px) !important;
+}
+
+/* ==========================================================================
+   THEME EXTRA OPTIONS : DOCTOLIB, FOREST & CREAM, APPLE/VERCEL
+   ========================================================================== */
+
+/* 1. Theme DOCTOLIB (Brilliant Blue & Ultra-Clean Medical Layout) */
+.theme-doctolib {
+  --color-chiro-cream: #f4f6f9;
+  --color-chiro-blue: #ffffff;
+  --color-chiro-light-blue: #e8f0fe;
+  --color-chiro-gold: #005387; /* Doctolib Blue */
+  --color-chiro-light-gold: #e8f0fe;
+  --color-chiro-mint-light: #e6f6ee;
+  --color-chiro-mint-hover: #ccefe0;
+
+  --color-indigo-50: #f4f6f9;
+  --color-indigo-100: #e8f0fe;
+  --color-indigo-200: #c2daf8;
+  --color-indigo-300: #8ab7f2;
+  --color-indigo-400: #4b92eb;
+  --color-indigo-500: #005387; /* Core Doctolib Brand Blue */
+  --color-indigo-550: #005387;
+  --color-indigo-600: #005387;
+  --color-indigo-650: #00426d;
+  --color-indigo-700: #00426d;
+  --color-indigo-800: #003152;
+  --color-indigo-900: #002137;
+  --color-indigo-950: #0a0f18;
+}
+
+.theme-doctolib #sidebar-layout-panel {
+  background: white !important;
+  border-right: 1px solid #e2e8f0 !important;
+  color: #1e293b !important;
+  box-shadow: 1px 0 10px rgba(0, 0, 0, 0.05) !important;
+}
+
+.theme-doctolib #sidebar-layout-panel h1,
+.theme-doctolib #sidebar-layout-panel h2,
+.theme-doctolib #sidebar-layout-panel h6,
+.theme-doctolib #sidebar-layout-panel .font-serif {
+  color: #005387 !important;
+}
+
+.theme-doctolib #sidebar-layout-panel p,
+.theme-doctolib #sidebar-layout-panel span:not(.font-mono) {
+  color: #475569 !important;
+}
+
+.theme-doctolib #sidebar-layout-panel select {
+  background-color: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+  color: #1e293b !important;
+}
+
+.theme-doctolib #sidebar-layout-panel select option {
+  background-color: white !important;
+  color: #1e293b !important;
+}
+
+.theme-doctolib #sidebar-layout-panel h1 svg,
+.theme-doctolib #sidebar-layout-panel .text-\[\#102e3b\] {
+  color: #005387 !important;
+}
+
+.theme-doctolib #sidebar-layout-panel .bg-white\/70,
+.theme-doctolib #sidebar-layout-panel [class*="bg-white/70"] {
+  background-color: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+  color: #1e293b !important;
+}
+
+.theme-doctolib #sidebar-navigation button[class*="bg-white"],
+.theme-doctolib #sidebar-navigation button[class*="bg-indigo-"],
+.theme-doctolib #sidebar-navigation button.bg-white {
+  background-color: #e8f0fe !important;
+  color: #005387 !important;
+  border-right: 4px solid #005387 !important;
+  border-left: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  border-radius: 12px 0 0 12px !important;
+  box-shadow: none !important;
+  font-weight: 800 !important;
+}
+
+.theme-doctolib #sidebar-navigation button[class*="bg-white"] svg,
+.theme-doctolib #sidebar-navigation button[class*="bg-indigo-"] svg,
+.theme-doctolib #sidebar-navigation button.bg-white svg {
+  color: #005387 !important;
+}
+
+.theme-doctolib #sidebar-navigation button:not([class*="bg-white"]):not([class*="bg-indigo-"]) {
+  color: #475569 !important;
+  background-color: transparent !important;
+  border-right: 4px solid transparent !important;
+}
+
+.theme-doctolib #sidebar-navigation button:not([class*="bg-white"]):not([class*="bg-indigo-"]):hover {
+  color: #005387 !important;
+  background-color: #f1f5f9 !important;
+}
+
+/* 2. Theme FOREST & CREAM (Modern Elegant Crème with Forest Green accents) */
+.theme-forest-cream {
+  --color-chiro-cream: #faf6ee; /* Cream */
+  --color-chiro-blue: #ffffff;
+  --color-chiro-light-blue: #f3ece0;
+  --color-chiro-gold: #113f27; /* Forest Green */
+  --color-chiro-light-gold: #e2ede6;
+  --color-chiro-mint-light: #e6f3eb;
+  --color-chiro-mint-hover: #cbe3d4;
+
+  --color-indigo-50: #faf6ee;
+  --color-indigo-100: #e2ede6;
+  --color-indigo-200: #c5dacd;
+  --color-indigo-300: #9cbca7;
+  --color-indigo-400: #6b9a7c;
+  --color-indigo-500: #113f27; /* Deep Forest */
+  --color-indigo-550: #113f27;
+  --color-indigo-600: #113f27;
+  --color-indigo-650: #0c2e1c;
+  --color-indigo-700: #0c2e1c;
+  --color-indigo-800: #081e12;
+  --color-indigo-900: #040e08;
+  --color-indigo-950: #020704;
+}
+
+.theme-forest-cream body {
+  background-color: #faf6ee !important;
+}
+
+.theme-forest-cream #sidebar-layout-panel {
+  background: #113f27 !important;
+  border-right: 1px solid #1a4d33 !important;
+  color: #bfd9cb !important;
+  box-shadow: 10px 0 30px rgba(17, 63, 39, 0.1) !important;
+}
+
+.theme-forest-cream #sidebar-layout-panel h1,
+.theme-forest-cream #sidebar-layout-panel h2,
+.theme-forest-cream #sidebar-layout-panel h6,
+.theme-forest-cream #sidebar-layout-panel .font-serif {
+  color: #faf6ee !important;
+}
+
+.theme-forest-cream #sidebar-layout-panel p,
+.theme-forest-cream #sidebar-layout-panel span:not(.font-mono) {
+  color: #bfd9cb !important;
+}
+
+.theme-forest-cream #sidebar-layout-panel select {
+  background-color: #174d31 !important;
+  border-color: #1a5637 !important;
+  color: #ffffff !important;
+}
+
+.theme-forest-cream #sidebar-layout-panel select option {
+  background-color: #113f27 !important;
+  color: #ffffff !important;
+}
+
+.theme-forest-cream #sidebar-layout-panel h1 svg,
+.theme-forest-cream #sidebar-layout-panel .text-\[\#102e3b\] {
+  color: #e2ede6 !important;
+}
+
+.theme-forest-cream #sidebar-layout-panel .bg-white\/70,
+.theme-forest-cream #sidebar-layout-panel [class*="bg-white/70"] {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+}
+
+.theme-forest-cream #sidebar-navigation button[class*="bg-white"],
+.theme-forest-cream #sidebar-navigation button[class*="bg-indigo-"],
+.theme-forest-cream #sidebar-navigation button.bg-white {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+  border-right: 4px solid #efdfbb !important; /* Gold/Cream accent */
+  border-left: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  border-radius: 12px 0 0 12px !important;
+  font-weight: 800 !important;
+}
+
+.theme-forest-cream #sidebar-navigation button[class*="bg-white"] svg,
+.theme-forest-cream #sidebar-navigation button[class*="bg-indigo-"] svg,
+.theme-forest-cream #sidebar-navigation button.bg-white svg {
+  color: #efdfbb !important;
+}
+
+.theme-forest-cream #sidebar-navigation button:not([class*="bg-white"]):not([class*="bg-indigo-"]) {
+  color: #bfd9cb !important;
+  background-color: transparent !important;
+  border-right: 4px solid transparent !important;
+}
+
+.theme-forest-cream #sidebar-navigation button:not([class*="bg-white"]):not([class*="bg-indigo-"]):hover {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* 3. Theme APPLE / VERCEL (Premium High-End Minimalist Monochrome Dark Theme) */
+.theme-apple-vercel {
+  --color-chiro-cream: #09090b; /* Black/Zinc */
+  --color-chiro-blue: #18181b;
+  --color-chiro-light-blue: #27272a;
+  --color-chiro-gold: #ffffff; /* Contrast white */
+  --color-chiro-light-gold: #3f3f46;
+  --color-chiro-mint-light: #27272a;
+  --color-chiro-mint-hover: #3f3f46;
+
+  --color-indigo-50: #09090b;
+  --color-indigo-100: #18181b;
+  --color-indigo-200: #27272a;
+  --color-indigo-300: #3f3f46;
+  --color-indigo-400: #71717a;
+  --color-indigo-500: #fafafa; /* Core White */
+  --color-indigo-550: #fafafa;
+  --color-indigo-600: #fafafa;
+  --color-indigo-650: #f4f4f5;
+  --color-indigo-700: #f4f4f5;
+  --color-indigo-800: #e4e4e7;
+  --color-indigo-900: #d4d4d8;
+  --color-indigo-950: #ffffff;
+}
+
+.theme-apple-vercel body {
+  background-color: #09090b !important;
+  color: #fafafa !important;
+}
+
+.theme-apple-vercel #sidebar-layout-panel {
+  background: #000000 !important;
+  border-right: 1px solid #1f1f23 !important;
+  color: #a1a1aa !important;
+}
+
+.theme-apple-vercel #sidebar-layout-panel h1,
+.theme-apple-vercel #sidebar-layout-panel h2,
+.theme-apple-vercel #sidebar-layout-panel h6,
+.theme-apple-vercel #sidebar-layout-panel .font-serif {
+  color: #ffffff !important;
+}
+
+.theme-apple-vercel #sidebar-layout-panel p,
+.theme-apple-vercel #sidebar-layout-panel span:not(.font-mono) {
+  color: #71717a !important;
+}
+
+.theme-apple-vercel #sidebar-layout-panel select {
+  background-color: #09090b !important;
+  border-color: #27272a !important;
+  color: #ffffff !important;
+}
+
+.theme-apple-vercel #sidebar-layout-panel select option {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+.theme-apple-vercel #sidebar-layout-panel h1 svg {
+  color: #ffffff !important;
+}
+
+.theme-apple-vercel #sidebar-layout-panel .bg-white-70-fallback {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.theme-apple-vercel #sidebar-navigation button[class*="bg-white"],
+.theme-apple-vercel #sidebar-navigation button[class*="bg-indigo-"],
+.theme-apple-vercel #sidebar-navigation button.bg-white {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+  border-right: 4px solid #ffffff !important;
+  border-left: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  border-radius: 12px 0 0 12px !important;
+  font-weight: 800 !important;
+}
+
+.theme-apple-vercel #sidebar-navigation button[class*="bg-white"] svg,
+.theme-apple-vercel #sidebar-navigation button[class*="bg-indigo-"] svg,
+.theme-apple-vercel #sidebar-navigation button.bg-white svg {
+  color: #ffffff !important;
+}
+
+.theme-apple-vercel #sidebar-navigation button:not([class*="bg-white"]):not([class*="bg-indigo-"]) {
+  color: #a1a1aa !important;
+  background-color: transparent !important;
+  border-right: 4px solid transparent !important;
+}
+
+.theme-apple-vercel #sidebar-navigation button:not([class*="bg-white"]):not([class*="bg-indigo-"]):hover {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Adjustments for Vercel theme to ensure inner blocks have nice black background and grey text instead of heavy card white */
+.theme-apple-vercel .bg-white,
+.theme-apple-vercel .bg-indigo-50,
+.theme-apple-vercel .card {
+  background-color: #121214 !important;
+  border-color: #27272a !important;
+  color: #f4f4f5 !important;
+}
+
+.theme-apple-vercel .text-slate-900, 
+.theme-apple-vercel .text-slate-800, 
+.theme-apple-vercel .text-slate-700, 
+.theme-apple-vercel .text-indigo-950 {
+  color: #f4f4f5 !important;
+}
+
+.theme-apple-vercel .text-slate-600, 
+.theme-apple-vercel .text-slate-500 {
+  color: #a1a1aa !important;
+}
+
+.theme-apple-vercel .border-slate-100,
+.theme-apple-vercel .border-slate-200,
+.theme-apple-vercel .border-slate-300 {
+  border-color: #27272a !important;
+}
+
+.theme-apple-vercel input,
+.theme-apple-vercel select,
+.theme-apple-vercel textarea {
+  background-color: #18181b !important;
+  border-color: #27272a !important;
+  color: #ffffff !important;
+}
+
+.theme-apple-vercel button {
+  color: #ffffff;
+}
+
+.theme-apple-vercel .bg-indigo-600, 
+.theme-apple-vercel .bg-emerald-600, 
+.theme-apple-vercel .bg-indigo-500 {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+.theme-apple-vercel .text-indigo-600, 
+.theme-apple-vercel .text-indigo-700, 
+.theme-apple-vercel .text-indigo-800 {
+  color: #fafafa !important;
+}
+
+.theme-apple-vercel button[class*="bg-emerald-"] {
+  background-color: #27272a !important;
+  color: #ffffff !important;
+  border-color: #3f3f46 !important;
+}
+
+.theme-apple-vercel button[class*="bg-rose-"] {
+  background-color: #7f1d1d !important;
+  color: #fca5a5 !important;
+}
+
+.theme-apple-vercel .text-emerald-800 {
+  color: #4ade80 !important;
+}
+
+.theme-apple-vercel .text-rose-600 {
+  color: #f87171 !important;
+}
+
+.theme-apple-vercel .bg-emerald-50 {
+  background-color: #18181b !important;
+}
+
+.theme-apple-vercel .shadow-sm {
+  box-shadow: 0 0 0 1px #27272a !important;
+}
+
+/* ==========================================================================
+   THEME: CLINIQUE DE RÉÉDUCATION RAFFINÉE, MODERNE ET DOUCE (REHAB-SOFT)
+   ========================================================================== */
+.theme-rehab-soft {
+  background-color: #faf8f3 !important;
+}
+
+/* Viewport structure styling for Rehab Soft */
+.theme-rehab-soft#applet-viewport,
+.theme-rehab-soft #applet-viewport {
+  background-color: #faf8f3 !important;
+}
+
+/* Sidebar with a premium dark eucalyptus linen color palette */
+.theme-rehab-soft #sidebar-navigation,
+.theme-rehab-soft #sidebar-layout-panel,
+.theme-rehab-soft aside[id="sidebar-navigator"] {
+  background-color: #2a3d34 !important;
+  border-color: #385044 !important;
+  color: #f1ebd9 !important;
+}
+
+/* Sidebar Headings inside Rehab Soft Theme */
+.theme-rehab-soft aside h1,
+.theme-rehab-soft aside h2,
+.theme-rehab-soft aside p,
+.theme-rehab-soft aside span {
+  color: #f1ebd9 !important;
+}
+
+.theme-rehab-soft aside .sidebar-accent-gold {
+  color: #dfc39b !important; /* Elegant gold accents in hierarchy */
+}
+
+/* Force active session panel in sidebar of Rehab Soft */
+.theme-rehab-soft aside div.bg-slate-50 {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Navigation active/selected items for Rehab Soft */
+.theme-rehab-soft #sidebar-navigation button[class*="bg-white"],
+.theme-rehab-soft #sidebar-navigation button[class*="bg-indigo-"],
+.theme-rehab-soft #sidebar-navigation button.bg-white,
+.theme-rehab-soft #sidebar-main-menu button[class*="bg-teal-50"] {
+  background-color: #4a6b5d !important; /* Beautiful active Eucalyptus Green */
+  color: #ffffff !important;
+  border-right: 4px solid #dfc39b !important; /* Gold active tab accent */
+  border-left: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  border-radius: 12px 0 0 12px !important;
+  font-weight: 800 !important;
+  box-shadow: 0 4px 12px rgba(74, 107, 93, 0.15) !important;
+}
+
+/* Ensures SVG icons inside active buttons of Rehab Soft are crisp and outstanding */
+.theme-rehab-soft #sidebar-navigation button[class*="bg-white"] svg,
+.theme-rehab-soft #sidebar-navigation button[class*="bg-indigo-"] svg,
+.theme-rehab-soft #sidebar-navigation button.bg-white svg,
+.theme-rehab-soft #sidebar-main-menu button[class*="bg-teal-50"] svg {
+  color: #dfc39b !important; /* Shiny gold glow on selected icons */
+  opacity: 1 !important;
+}
+
+/* Inactive button links in Rehab Soft Sidebar */
+.theme-rehab-soft #sidebar-navigation button:not([class*="bg-white"]):not([class*="bg-indigo-"]):not(.bg-white),
+.theme-rehab-soft #sidebar-main-menu button:not([class*="bg-teal-50"]) {
+  color: #d1ded7 !important; /* Eucalyptus leaf-light */
+  background-color: transparent !important;
+  border-right: 4px solid transparent !important;
+  opacity: 0.9 !important;
+}
+
+/* Inactive icons remain perfectly visible, clear and highly readable even without hover */
+.theme-rehab-soft #sidebar-navigation button:not([class*="bg-white"]):not([class*="bg-indigo-"]):not(.bg-white) svg:not([id^="custom-"]),
+.theme-rehab-soft #sidebar-main-menu button:not([class*="bg-teal-50"]) svg:not([id^="custom-"]) {
+  color: #a3bdae !important; /* Soft mint sage is highly visible on the dark eucalyptus sidebg */
+  opacity: 0.95 !important;
+}
+
+/* Preserve custom SVG icons' beautiful multi-color look */
+.theme-rehab-soft #sidebar-navigation button:not([class*="bg-white"]):not([class*="bg-indigo-"]):not(.bg-white) svg[id^="custom-"],
+.theme-rehab-soft #sidebar-main-menu button:not([class*="bg-teal-50"]) svg[id^="custom-"] {
+  opacity: 0.95 !important;
+}
+
+/* Harmonize the bg-slate-100 wrappers and default text icons inside the Sidebar within Rehab Soft theme */
+.theme-rehab-soft #sidebar-main-menu .bg-slate-100,
+.theme-rehab-soft #sidebar-navigator .bg-slate-100 {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  color: #dfc39b !important;
+}
+
+.theme-rehab-soft #sidebar-main-menu .text-slate-400,
+.theme-rehab-soft #sidebar-navigator .text-slate-400 {
+  color: #a3bdae !important;
+  opacity: 0.9 !important;
+}
+
+/* Inactive navigation item survol / hover */
+.theme-rehab-soft #sidebar-navigation button:not([class*="bg-white"]):not([class*="bg-indigo-"]):not(.bg-white):hover,
+.theme-rehab-soft #sidebar-main-menu button:not([class*="bg-teal-50"]):hover {
+  background-color: rgba(255, 255, 255, 0.07) !important;
+  color: #ffffff !important;
+  border-right: 4px solid rgba(223, 195, 155, 0.5) !important;
+}
+
+.theme-rehab-soft #sidebar-navigation button:not([class*="bg-white"]):not([class*="bg-indigo-"]):not(.bg-white):hover svg,
+.theme-rehab-soft #sidebar-main-menu button:not([class*="bg-teal-50"]):hover svg {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Body / Main Container elements inside Rehab Soft */
+.theme-rehab-soft .bg-white,
+.theme-rehab-soft .card {
+  background-color: #ffffff !important;
+  border-color: rgba(74, 107, 93, 0.08) !important;
+}
+
+/* Style for soft highlights and tables header */
+.theme-rehab-soft .bg-slate-50,
+.theme-rehab-soft .bg-slate-100,
+.theme-rehab-soft .bg-indigo-50 {
+  background-color: #f7f5ed !important; /* Cachemire linen soft grey-yellow */
+}
+
+/* Headings colors */
+.theme-rehab-soft h1,
+.theme-rehab-soft h2,
+.theme-rehab-soft h3,
+.theme-rehab-soft h4,
+.theme-rehab-soft h5,
+.theme-rehab-soft h6,
+.theme-rehab-soft .text-slate-900 {
+  color: #213c30 !important; /* Deep wellness-sage brand color */
+  font-family: var(--font-sans) !important;
+}
+
+.theme-rehab-soft p,
+.theme-rehab-soft span:not(.font-mono),
+.theme-rehab-soft .text-slate-500 {
+  color: #4c685c !important; /* Calm eucalyptus slate gray */
+}
+
+/* Primary buttons (eucalyptus) */
+.theme-rehab-soft .bg-indigo-600, 
+.theme-rehab-soft .bg-indigo-500, 
+.theme-rehab-soft .bg-emerald-600 {
+  background-color: #4a6b5d !important;
+  color: #ffffff !important;
+}
+
+/* Correction des oublis de points (.) pour les classes de bordures */
+.theme-rehab-soft .border-slate-100, 
+.theme-rehab-soft .border-slate-205 {
+  border-color: #e5ede9 !important;
+}
+
+.theme-rehab-soft input,
+.theme-rehab-soft select,
+.theme-rehab-soft textarea {
+  background-color: #ffffff !important;
+  border-color: #cddbdb !important;
+  border-color: rgba(74, 107, 93, 0.18) !important;
+  color: #213c30 !important;
+  color: #213c30 !important;
+}
+
+/* ==========================================================================
+   GLASSMORPHIC & GOLD 3D ICONS STYLES
+   ========================================================================== */
+.glass-gold-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), inset 0 0 15px rgba(255, 255, 255, 0.1);
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.glass-gold-icon-container:hover {
+  transform: scale(1.15) translateY(-2px) rotate(3deg);
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3), inset 0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+.glass-gold-icon {
+  transition: all 0.5s ease;
+  color: #D4AF37 !important; /* Metallic Gold */
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.4)) 
+          drop-shadow(0 0 5px rgba(212, 175, 55, 0.6));
+}
+
+.glass-gold-icon-container:hover .glass-gold-icon {
+  transform: scale(1.1) rotate(-3deg);
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.5)) 
+          drop-shadow(0 0 12px rgba(212, 175, 55, 0.9));
+}
+
+/* Active State */
+.active-glass-gold-button .glass-gold-icon-container {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.1) 100%);
+  border-color: rgba(212, 175, 55, 0.6);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3), inset 0 0 15px rgba(212, 175, 55, 0.2);
+  transform: scale(1.05);
+}
+
+.active-glass-gold-button .glass-gold-icon {
+  color: #FFD700 !important; /* Bright Gold */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5)) 
+          drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+  transform: scale(1.1);
+}
+
+/* ==========================================================================
+   REFRACTORISATION CELLULE DE RENDEZ-VOUS (ORTHO / PSYCHO)
+   ========================================================================== */
+.cellule-sans-abonnement {
+  background-color: #800020 !important;
+  color: #FFFFFF !important;
+  border-radius: 8px;
+  max-height: 52px;
+  width: 100%;
+  padding: 4px 8px;
+  overflow: hidden;
+  transition: filter 0.15s ease, opacity 0.15s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cellule-sans-abonnement:hover {
+  filter: brightness(1.08);
+  opacity: 0.95;
+}
+
+.cellule-avec-abonnement {
+  background-color: #2E8B57 !important;
+  color: #FFFFFF !important;
+  border-radius: 8px;
+  max-height: 52px;
+  width: 100%;
+  padding: 4px 8px;
+  overflow: hidden;
+  transition: filter 0.15s ease, opacity 0.15s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cellule-avec-abonnement:hover {
+  filter: brightness(1.08);
+  opacity: 0.95;
+}
+
+/* ==========================================================================
+   THEME: KACEL SANTE (DESIGN SYSTEM MODERNE MEDICAL/CLINIQUE)
+   ========================================================================== */
+.theme-kacel-sante {
+  background-color: #f5fbfc !important;
+  --color-chiro-cream: #f5fbfc;
+  --color-chiro-blue: #ffffff;
+  --color-chiro-light-blue: #e0f2f1;
+  --color-chiro-gold: #00897b;
+  --color-chiro-light-gold: #e0f2f1;
+  --color-chiro-mint-light: #e0f2f1;
+  --color-chiro-mint-hover: #80cbc4;
+
+  --color-indigo-50: #f5fbfc;
+  --color-indigo-100: #e0f2f1;
+  --color-indigo-200: #80cbc4;
+  --color-indigo-300: #4db6ac;
+  --color-indigo-400: #26a69a;
+  --color-indigo-500: #00897b;
+  --color-indigo-550: #00897b;
+  --color-indigo-600: #00897b;
+  --color-indigo-650: #00796b;
+  --color-indigo-700: #00796b;
+  --color-indigo-800: #00838f;
+  --color-indigo-900: #263238;
+  --color-indigo-950: #263238;
+}
+
+.theme-kacel-sante body {
+  background-color: #f5fbfc !important;
+  color: #263238 !important;
+}
+
+.theme-kacel-sante #sidebar-layout-panel {
+  background: #ffffff !important;
+  border-right: 1px solid #e0f2f1 !important;
+  color: #263238 !important;
+  box-shadow: 1px 0 10px rgba(38, 50, 56, 0.03) !important;
+}
+
+.theme-kacel-sante #sidebar-layout-panel h1,
+.theme-kacel-sante #sidebar-layout-panel h2,
+.theme-kacel-sante #sidebar-layout-panel h6,
+.theme-kacel-sante #sidebar-layout-panel .font-serif {
+  color: #263238 !important;
+}
+
+.theme-kacel-sante #sidebar-layout-panel p,
+.theme-kacel-sante #sidebar-layout-panel span:not(.font-mono) {
+  color: #546e7a !important;
+}
+
+.theme-kacel-sante #sidebar-layout-panel select {
+  background-color: #e0f2f1 !important;
+  border-color: #80cbc4 !important;
+  color: #263238 !important;
+}
+
+.theme-kacel-sante #sidebar-layout-panel select option {
+  background-color: #ffffff !important;
+  color: #263238 !important;
+}
+
+.theme-kacel-sante #sidebar-layout-panel h1 svg,
+.theme-kacel-sante #sidebar-layout-panel .text-\[\#102e3b\] {
+  color: #00897b !important;
+}
+
+.theme-kacel-sante #sidebar-layout-panel .bg-white\/70,
+.theme-kacel-sante #sidebar-layout-panel [class*="bg-white/70"] {
+  background-color: #e0f2f1 !important;
+  border-color: #80cbc4 !important;
+  color: #263238 !important;
+}
+
+.theme-kacel-sante #sidebar-navigation button[class*="bg-white"],
+.theme-kacel-sante #sidebar-navigation button[class*="bg-indigo-"],
+.theme-kacel-sante #sidebar-navigation button.bg-white,
+.theme-kacel-sante #sidebar-main-menu button[class*="bg-teal-50"] {
+  background-color: #e0f2f1 !important;
+  color: #00897b !important;
+  border-right: 4px solid #00897b !important;
+  border-left: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  border-radius: 12px 0 0 12px !important;
+  font-weight: 800 !important;
+}
+
+.theme-kacel-sante #sidebar-navigation button[class*="bg-white"] svg,
+.theme-kacel-sante #sidebar-navigation button[class*="bg-indigo-"] svg,
+.theme-kacel-sante #sidebar-navigation button.bg-white svg,
+.theme-kacel-sante #sidebar-main-menu button[class*="bg-teal-50"] svg {
+  color: #00897b !important;
+  opacity: 1 !important;
+}
+
+.theme-kacel-sante #sidebar-navigation button:not([class*="bg-white"]):not([class*="bg-indigo-"]) {
+  color: #546e7a !important;
+  background-color: transparent !important;
+  border-right: 4px solid transparent !important;
+}
+
+.theme-kacel-sante #sidebar-navigation button:not([class*="bg-white"]):not([class*="bg-indigo-"]):hover {
+  color: #263238 !important;
+  background-color: rgba(224, 242, 241, 0.5) !important;
+  border-right: 4px solid #80cbc4 !important;
+}
+
+.theme-kacel-sante .bg-white,
+.theme-kacel-sante .card {
+  background-color: #ffffff !important;
+  border-color: rgba(38, 50, 56, 0.06) !important;
+}
+
+.theme-kacel-sante .bg-slate-50,
+.theme-kacel-sante .bg-slate-100,
+.theme-kacel-sante .bg-indigo-50 {
+  background-color: #f0fdfa !important;
+}
+
+.theme-kacel-sante h1,
+.theme-kacel-sante h2,
+.theme-kacel-sante h3,
+.theme-kacel-sante h4,
+.theme-kacel-sante h5,
+.theme-kacel-sante h6,
+.theme-kacel-sante .text-slate-900,
+.theme-kacel-sante .text-indigo-950 {
+  color: #263238 !important;
+}
+
+.theme-kacel-sante p,
+.theme-kacel-sante span:not(.font-mono),
+.theme-kacel-sante .text-slate-500,
+.theme-kacel-sante .text-slate-600 {
+  color: #546e7a !important;
+}
+
+.theme-kacel-sante .text-indigo-600,
+.theme-kacel-sante .text-indigo-700,
+.theme-kacel-sante .text-indigo-800 {
+  color: #00897b !important;
+}
+
+.theme-kacel-sante .bg-indigo-600, 
+.theme-kacel-sante .bg-indigo-500,
+.theme-kacel-sante .bg-emerald-600 {
+  background-color: #00897b !important;
+  color: #ffffff !important;
+}
+
+.theme-kacel-sante .bg-indigo-600:hover, 
+.theme-kacel-sante .bg-indigo-500:hover,
+.theme-kacel-sante .bg-emerald-600:hover {
+  background-color: #00838f !important;
+}
+
+.theme-kacel-sante .border-slate-100, 
+.theme-kacel-sante .border-slate-200 {
+  border-color: #e0f2f1 !important;
+}
+
+.theme-kacel-sante input,
+.theme-kacel-sante select,
+.theme-kacel-sante textarea {
+  background-color: #ffffff !important;
+  border-color: #80cbc4 !important;
+  color: #263238 !important;
+}
+
+.theme-kacel-sante input:focus,
+.theme-kacel-sante select:focus,
+.theme-kacel-sante textarea:focus {
+  border-color: #26a69a !important;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(38, 166, 154, 0.2);
+}
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #rapport-caisse-print,
+  #rapport-caisse-print * {
+    visibility: visible;
+  }
+  #rapport-caisse-print {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+  }
+  button, .no-print {
+    display: none !important;
+  }
+}
+
+

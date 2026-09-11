@@ -1,0 +1,88 @@
+{
+  "entities": {
+    "Patient": {
+      "title": "Patient",
+      "description": "Un patient enregistré dans le système.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Nom complet du patient" },
+        "phone": { "type": "string", "description": "Numéro de téléphone" },
+        "created_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "created_at"]
+    },
+    "Pack": {
+      "title": "Pack d'Abonnement",
+      "description": "Un forfait de séances avec un prix défini.",
+      "type": "object",
+      "properties": {
+        "label": { "type": "string", "description": "Nom du pack (ex: Pack 10 séances)" },
+        "amount": { "type": "number", "description": "Prix total du pack" },
+        "nombre_seance": { "type": "integer", "description": "Nombre de séances incluses" }
+      },
+      "required": ["label", "amount", "nombre_seance"]
+    },
+    "GestionAbonnement": {
+      "title": "Abonnement",
+      "description": "Lien entre un patient et un pack.",
+      "type": "object",
+      "properties": {
+        "patient_id": { "type": "string", "description": "Référence au patient" },
+        "pack_id": { "type": "string", "description": "Référence au pack" },
+        "date_debut": { "type": "string", "format": "date-time" },
+        "remise_globale": { "type": "number", "description": "Remise en pourcentage" },
+        "used_sessions": { "type": "integer", "description": "Nombre de séances déjà effectuées" },
+        "status": { "type": "string", "enum": ["active", "completed", "cancelled"] }
+      },
+      "required": ["patient_id", "pack_id", "date_debut", "status"]
+    },
+    "Versement": {
+      "title": "Versement",
+      "description": "Un paiement effectué pour un abonnement.",
+      "type": "object",
+      "properties": {
+        "gestion_abonnement_id": { "type": "string", "description": "Référence à l'abonnement" },
+        "amount": { "type": "number", "description": "Montant versé" },
+        "date_versement": { "type": "string", "format": "date-time" },
+        "note": { "type": "string" }
+      },
+      "required": ["gestion_abonnement_id", "amount", "date_versement"]
+    },
+    "ChatChannel": {
+      "title": "Canal de Discussion",
+      "description": "Un groupe ou une discussion privée 1-à-1.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Nom du canal de discussion" },
+        "type": { "type": "string", "description": "Type de canal (group ou private)" },
+        "members": { "type": "array", "description": "Liste des IDs d'utilisateurs (ID_Utilisateur sous forme de string) participants" },
+        "last_message_text": { "type": "string", "description": "Dernier message envoyé" },
+        "last_message_time": { "type": "object", "description": "Timestamp Firebase de la dernière activité" }
+      },
+      "required": ["type", "members"]
+    },
+    "ChatMessage": {
+      "title": "Message de discussion",
+      "description": "Un message envoyé sur un canal.",
+      "type": "object",
+      "properties": {
+        "channelId": { "type": "string", "description": "ID du canal associé" },
+        "senderId": { "type": "string", "description": "ID de l'utilisateur expéditeur (ID_Utilisateur sous forme de string)" },
+        "senderName": { "type": "string", "description": "Nom ou login de l'expéditeur" },
+        "senderRole": { "type": "string", "description": "Rôle de l'expéditeur" },
+        "content": { "type": "string", "description": "Contenu textuel du message" },
+        "timestamp": { "type": "object", "description": "Timestamp Firebase" },
+        "readBy": { "type": "array", "description": "Utilisateurs ayant lu ce message (ID_Utilisateur)" }
+      },
+      "required": ["channelId", "senderId", "senderName", "content", "timestamp"]
+    }
+  },
+  "firestore": {
+    "patients": { "schema": "Patient", "description": "Liste des patients" },
+    "packs": { "schema": "Pack", "description": "Liste des forfaits disponibles" },
+    "subscriptions": { "schema": "GestionAbonnement", "description": "Abonnements souscrits" },
+    "payments": { "schema": "Versement", "description": "Historique des paiements" },
+    "chat_channels": { "schema": "ChatChannel", "description": "Canaux de discussion du personnel" },
+    "chat_messages": { "schema": "ChatMessage", "description": "Flux des messages de discussion" }
+  }
+}
